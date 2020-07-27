@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(void){
+int s=1001,a=0,j,k,dcn,num[s],ari[s],ld,sum=0,sum3=0;
+char c;
+for(j=0;j<s;j++){num[j]=ari[j]=0;}printf("2,3,5,7,11&13 factor test, end number input with an 'e'.\n\nNumber: ");
+for(dcn=0;dcn<s;dcn++){c=getchar();num[dcn]=c-48;if((c==101)||dcn>s){num[dcn]=0;break;}}dcn--;
+
+for(j=0,k=dcn;j<=dcn;j++,k--){ari[j]=num[k];}for(j=0;j<=dcn;j++){num[j]=ari[j];sum3+=num[j];ari[j]=0;}
+
+k=md(dcn,3);dcn=dcn-(k-3);ld=num[0];
+
+for(j=dcn;j>=0;j-=3){ari[a]=num[j]+num[j+1]*10+num[j+2]*100;a++;}a--;for(j=0;j<=a;j++){num[j]=ari[j];}
+
+for(j=1;j<=a;j++){if(md(j,2)==0){sum+=num[j];}else{sum-=num[j];}if(sum>=s){sum-=s;}if(sum<=-s){sum+=s;}}sum=abs(sum);
+
+printf("\nIs divisible by:\n",sum);if(md(ld,2)==0){pr(2);}if(md(sum3,3)==0){pr(3);}if(md(ld,5)==0){pr(5);}
+if(md(sum,7)==0){pr(7);}if(md(sum,11)==0){pr(11);}if(md(sum,13)==0){pr(13);}}
+
+md(int n,int m){n=abs(n);if(n<m){return(n);}while(n>=m){n-=m;}return(n);}
+dv(int n,int m){int c=0;if(n<m){return(0);}while(n>=m){n-=m;c++;}return(c);}
+pr(int m){printf("%d\n",m);}
